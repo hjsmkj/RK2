@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 #include <sstream>
 #include <iostream>
+#include "message.cpp"
 
 // Тесты для класса TextMessage
 TEST(TextMessageTest, PrintLayer) {
