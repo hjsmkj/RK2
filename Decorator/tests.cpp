@@ -80,3 +80,6 @@ TEST(CompressionMessageDecoratorTest, Serialize) {
     std::string result = compressedMsg.Serialize();
     EXPECT_EQ(result, "ab"); // Зависит от реализации
 }
+int main() {
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
