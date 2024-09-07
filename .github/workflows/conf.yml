@@ -1,0 +1,42 @@
+name: CMake
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Клонирование репозитория в рабочую директорию
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    # Установка CMake
+    - name: Install CMake
+      uses: jwlawson/actions-setup-cmake@v1.10
+
+    - name: Configure CMake
+      run: cmake -B build
+
+    # Сборка проекта
+    - name: Build
+      run: cmake --build build
+
+    # Выполнение тестов
+    - name: Run tests
+      run: |
+        cd build
+        ./tests
+
+    # Выполнение main.cpp
+    - name: Run main
+      run: |
+        cd build
+        ./mt
+
+    # Загрузка артeфактов сборки
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: message
+        path: build
