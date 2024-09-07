@@ -28,12 +28,6 @@ jobs:
         cd build
         ./tests
 
-    # Выполнение main.cpp
-    - name: Run main
-      run: |
-        cd build
-        ./mt
-
     # Загрузка артeфактов сборки
     - name: Upload artifact
       uses: actions/upload-artifact@v2
